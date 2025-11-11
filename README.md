@@ -480,8 +480,9 @@ This project is for educational purposes.
 
 ## 👥 Contributors
 
-- [@hamzaaouni](https://github.com/hamzaaouni) - Project maintainer
-- [@yassinElhamdouni](https://github.com/yassinElhamdouni) - Contributor
+**Project Maintainers:**
+- [@hamzaaouni](https://github.com/hamzaaouni)
+- [@yassinElhamdouni](https://github.com/yassinElhamdouni)
 
 Created as part of Big Data 2 course (M2).
 
