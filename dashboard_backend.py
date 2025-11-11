@@ -19,6 +19,23 @@ CORS(app)  # Enable CORS for React frontend
 SCRIPT_DIR = Path(__file__).parent.absolute()
 STOCK_STREAM_DIR = SCRIPT_DIR / "stock_stream"
 
+@app.route('/', methods=['GET'])
+def root():
+    """Root endpoint with API information"""
+    return jsonify({
+        "message": "Spark Streaming Lab Dashboard API",
+        "status": "running",
+        "endpoints": {
+            "health": "/api/health",
+            "overview": "/api/data/overview",
+            "prices": "/api/data/prices",
+            "volatility": "/api/data/volatility",
+            "correlation": "/api/data/correlation",
+            "var": "/api/data/var",
+            "volume": "/api/data/volume"
+        }
+    })
+
 def load_stock_data():
     """Load and process all stock data from batch files"""
     all_data = []

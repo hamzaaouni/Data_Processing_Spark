@@ -7,8 +7,7 @@ import VolumeChart from './VolumeChart';
 import CorrelationHeatmap from './CorrelationHeatmap';
 import VarChart from './VarChart';
 import OverviewCards from './OverviewCards';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL } from '../config';
 
 const Dashboard = () => {
   const [overview, setOverview] = useState(null);
@@ -18,6 +17,8 @@ const Dashboard = () => {
   const [varData, setVarData] = useState(null);
   const [volume, setVolume] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [lastUpdate, setLastUpdate] = useState(null);
+  const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +39,8 @@ const Dashboard = () => {
         setCorrelation(correlationRes.data);
         setVarData(varRes.data);
         setVolume(volumeRes.data);
+        setLastUpdate(new Date());
+        setCountdown(5); // Reset countdown when data is successfully fetched
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -46,9 +49,24 @@ const Dashboard = () => {
     };
 
     fetchData();
-    // Refresh data every 30 seconds
-    const interval = setInterval(fetchData, 30000);
-    return () => clearInterval(interval);
+    
+    // Countdown timer - updates every second
+    const countdownInterval = setInterval(() => {
+      setCountdown(prev => {
+        const newCount = prev <= 1 ? 5 : prev - 1;
+        return newCount;
+      });
+    }, 1000);
+    
+    // Refresh data every 5 seconds for real-time updates
+    const dataInterval = setInterval(() => {
+      fetchData();
+    }, 5000);
+    
+    return () => {
+      clearInterval(countdownInterval);
+      clearInterval(dataInterval);
+    };
   }, []);
 
   if (loading) {
@@ -65,11 +83,18 @@ const Dashboard = () => {
       <header className="dashboard-header">
         <h1>📊 Spark Streaming Lab Dashboard</h1>
         <p className="subtitle">Real-time Stock Market Analysis</p>
+        <div className="realtime-indicator">
+          <span className="pulse-dot"></span>
+          <span>Live Data (updates every 5s)</span>
+          <span className="countdown-badge">Next update in: {countdown}s</span>
+        </div>
         {overview && (
           <div className="header-info">
             <span>Records: {overview.total_records}</span>
             <span>•</span>
             <span>Symbols: {overview.symbols.join(', ')}</span>
+            <span>•</span>
+            <span>Last Update: {lastUpdate ? lastUpdate.toLocaleTimeString() : 'Loading...'}</span>
           </div>
         )}
       </header>

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL } from './config';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -21,7 +20,7 @@ function App() {
         }
       })
       .catch(err => {
-        setError('Cannot connect to API. Make sure the backend is running on http://localhost:5000');
+        setError(`Cannot connect to API. Make sure the backend is running on ${API_BASE_URL.replace('/api', '')}`);
         setLoading(false);
       });
   }, []);
