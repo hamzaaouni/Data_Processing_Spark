@@ -10,6 +10,7 @@ A comprehensive demonstration of **Apache Spark Structured Streaming**, **Spark 
 
 - [Overview](#overview)
 - [Features](#features)
+- [Visualizations](#-visualizations)
 - [Architecture](#architecture)
 - [Pipeline Explanation](#pipeline-explanation)
 - [Prerequisites](#prerequisites)
@@ -18,6 +19,7 @@ A comprehensive demonstration of **Apache Spark Structured Streaming**, **Spark 
 - [Project Structure](#project-structure)
 - [Technical Details](#technical-details)
 - [Troubleshooting](#troubleshooting)
+- [Contributors](#-contributors)
 
 ## 🎯 Overview
 
@@ -39,6 +41,49 @@ This project demonstrates how Apache Spark unifies **batch processing**, **strea
 - 💰 **Risk Analysis**: Value at Risk (VaR) calculation at 95% confidence
 - 🐳 **Docker Support**: Cross-platform execution without local dependencies
 - 🔧 **Cross-Platform**: Works on Windows, Linux, and Mac
+
+## 📊 Visualizations
+
+The following visualizations are generated from the Spark streaming lab results:
+
+### Comprehensive Dashboard
+![Comprehensive Dashboard](visualizations/8_comprehensive_dashboard.png)
+
+### Price Analysis
+![Price Trends Over Time](visualizations/1_price_trends.png)
+*Stock price trends showing real-time price movements for all symbols*
+
+![Price Distribution](visualizations/2_price_distribution.png)
+*Price distribution comparison across different stocks*
+
+### Volatility Analysis
+![Volatility Analysis](visualizations/3_volatility_analysis.png)
+*Volatility trends over time and average volatility by stock*
+
+### Volume Analysis
+![Volume Analysis](visualizations/4_volume_analysis.png)
+*Trading volume over time and total volume statistics*
+
+### Price Change Analysis
+![Price Change Analysis](visualizations/5_price_change_analysis.png)
+*Price change distributions and percentage changes*
+
+### Correlation Analysis
+![Correlation Heatmap](visualizations/6_correlation_heatmap.png)
+*Stock price correlation matrix showing relationships between different stocks*
+
+### Risk Analysis
+![Value at Risk](visualizations/7_var_analysis.png)
+*Value at Risk (VaR) analysis at 95% confidence level*
+
+---
+
+**Note:** To generate these visualizations, run:
+```bash
+python visualize_results.py
+```
+
+Visualizations will be saved in the `visualizations/` directory.
 
 ## 🏗️ Architecture
 
@@ -268,8 +313,8 @@ Three-stage pipeline:
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd lab7
+git clone https://github.com/hamzaaouni/Data_Processing_Spark.git
+cd Data_Processing_Spark
 ```
 
 ## 💻 Usage
@@ -433,7 +478,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is for educational purposes.
 
-## 👤 Author
+## 👥 Contributors
+
+- [@hamzaaouni](https://github.com/hamzaaouni) - Project maintainer
+- [@yassinElhamdouni](https://github.com/yassinElhamdouni) - Contributor
 
 Created as part of Big Data 2 course (M2).
 
