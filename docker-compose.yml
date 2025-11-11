@@ -1,0 +1,28 @@
+
+services:
+  spark-lab:
+    build: .
+    container_name: spark-streaming-lab
+    volumes:
+      # Mount the lab directory to preserve data
+      - ./stock_stream:/app/stock_stream
+      - ./spark-warehouse:/app/spark-warehouse
+      # Mount the scripts so you can edit them without rebuilding
+      - ./lab7.py:/app/lab7.py
+      - ./visualize_results.py:/app/visualize_results.py
+      # Mount visualizations directory to save plots
+      - ./visualizations:/app/visualizations
+    environment:
+      - JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+      - SPARK_LOCAL_IP=localhost
+    # Increase memory limit if needed
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+    # Keep container running to see results
+    stdin_open: true
+    tty: true
+

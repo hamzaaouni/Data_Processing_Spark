@@ -1,0 +1,48 @@
+.correlation-heatmap {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.correlation-heatmap table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.correlation-heatmap th {
+  background: #667eea;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 80px;
+}
+
+.correlation-heatmap .row-label {
+  background: #667eea;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.correlation-heatmap .cell {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.correlation-heatmap .cell:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  position: relative;
+}
+
